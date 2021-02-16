@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+
 import { Header } from '../Header'
 
 interface LayoutProps {
@@ -12,13 +13,18 @@ export const Layout: React.FC<LayoutProps> = ({
   children,
 }: LayoutProps) => {
   return (
-    <div className="h-screen w-screen">
+    <div className="h-screen w-screen flex flex-col">
       <Head>
         <title>{title}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Header />
-      <main className="w-screen">Here</main>
+      {/* // TODO fix height when only have less 10 items */}
+      <main className="bg-pink-850 flex flex-1 h-auto w-screen ">
+        <div className="flex flex-row flex-wrap mx-auto px-10 py-10 justify-center">
+          {children}
+        </div>
+      </main>
     </div>
   )
 }
