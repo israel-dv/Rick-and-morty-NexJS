@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { Character } from '../../utils/interface/character'
 
 interface CardProps {

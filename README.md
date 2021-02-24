@@ -4,7 +4,7 @@
 
 ## About the project
 
-Project to practice Javascript, React and NextJS. This projects comsumes a API from rickandmortyapi.com This project is not comercialize and you can donwloa this project to see the code or if you want contribute, you can do it, make a pull request if you think that the project can be better (new request or better the code)
+Project to practice Javascript, React and NextJS. This projects comsumes an API from rickandmortyapi.com This project is not comercialize and you can donwloa this project to see the code or if you want contribute, you can do it, make a pull request if you think that the project can be better (new request or better the code)
 
 This project implements the best practice of React and typescript by Aribnb: https://github.com/airbnb/javascript
 
