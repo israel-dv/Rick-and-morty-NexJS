@@ -18,3 +18,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.main-body {
+  height: calc(100% - 5rem);
+}

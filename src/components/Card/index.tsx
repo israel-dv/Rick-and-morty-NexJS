@@ -7,11 +7,11 @@ interface CardProps {
 
 export const Card: React.FC<CardProps> = ({ character }: CardProps) => {
   return (
-    <div className="bg-pink-950 flex h-44 w-96 m-5 overflow-hidden rounded-md shadow relative text-white">
+    <div className="bg-gray-850 hover:bg-gray-650 flex h-44 w-96 m-5 overflow-hidden rounded-md shadow-lg relative text-white cursor-pointer">
       <div className="flex h-full bg-red-850 flex-2-1">
         <img src={character.image} alt="logo" />
       </div>
-      <div className="flex flex-col h-full bg-gray-800 flex-3-1 px-5 py-2">
+      <div className="flex flex-col h-full flex-3-1 px-5 py-2">
         <div className="flex flex-col">
           <span className="text-lg">{character.name}</span>
           <div className="flex items-center">

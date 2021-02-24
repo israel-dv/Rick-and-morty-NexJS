@@ -5,11 +5,17 @@ module.exports = {
     extend: {
       backgroundColor: (theme) => ({
         ...theme('colors'),
-        'blue-970': '#110E2E',
+        'gray-650': '#2e303e',
+        'gray-750': '#262836',
+        'gray-850': '#201e2b',
+        'green-850': '#127aed',
+        'blue-250': '#242425',
+        'blue-970': '#042a3a',
         'blue-950': '#1D0E30',
+        'pink-650': '#ea7c69',
         'pink-850': '#2E0D32',
         'pink-950': '#470D35',
-        'red-850': '#AD0A42',
+        'blue-850': '#127aed',
       }),
     },
     flex: {

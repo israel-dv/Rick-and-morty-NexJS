@@ -19,9 +19,8 @@ export const Layout: React.FC<LayoutProps> = ({
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Header />
-      {/* // TODO fix height when only have less 10 items */}
-      <main className="bg-pink-850 flex flex-1 h-auto w-screen ">
-        <div className="flex flex-row flex-wrap mx-auto px-10 py-10 justify-center">
+      <main className="bg-gray-750 flex flex-1 main-body w-screen ">
+        <div className="flex flex-row flex-wrap mx-auto px-10 py-10 justify-center overflow-y-auto">
           {children}
         </div>
       </main>
