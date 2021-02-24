@@ -23,4 +23,6 @@ This project implements the best practice of React and typescript by Aribnb: htt
 - Data from Rick&MortyAPI (www.rickandmortyapi.com)
 - Love 💙
 
-##
+## You can see the project live in the following link
+
+https://rick-and-morty-next-js-israel-dv.vercel.app/
