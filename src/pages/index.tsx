@@ -1,65 +1,52 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import React from 'react'
+import { useLazyQuery, useQuery } from '@apollo/client'
+
+import ChevronRight from '../assets/icons/chevron-right.svg'
+import ChevronLeft from '../assets/icons/chevron-left.svg'
+import { Card } from '../components/Card'
+import { CHARACTERS_QUERY } from '../api/characters/characters'
+
+const INIT_PAGE = 1
+const END_PAGE = 34
 
 export default function Home() {
+  const [characters, setCharacters] = React.useState(() => [])
+  const [page, setPage] = React.useState(() => INIT_PAGE)
+  const [getCharacters, { data: charactersFromData, loading }] = useLazyQuery(
+    CHARACTERS_QUERY,
+  )
+
+  React.useEffect(() => {
+    getCharacters({ variables: { page: page } })
+  }, [page])
+
+  React.useEffect(() => {
+    if (charactersFromData) {
+      setCharacters(charactersFromData.characters.results)
+    }
+  }, [charactersFromData])
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      {characters.map((character, index) => (
+        <Card character={character} key={`${character['name'] + index}`} />
+      ))}
+      {page > INIT_PAGE && (
+        <button
+          className="flex items-center justify-center h-14 w-14 rounded-full bg-pink-650 absolute bottom-10 left-10 shadow-lg hover:opacity-90 cursor-pointer"
+          onClick={() => setPage(page - 1)}
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+          <ChevronLeft />
+        </button>
+      )}
+      {page < END_PAGE && (
+        <button
+          className="flex items-center justify-center h-14 w-14 rounded-full bg-pink-650 absolute bottom-10 right-10 shadow-lg hover:opacity-90 cursor-pointer"
+          onClick={() => setPage(page + 1)}
+        >
+          <ChevronRight />
+        </button>
+      )}
+    </>
   )
 }
